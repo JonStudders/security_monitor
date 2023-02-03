@@ -1,0 +1,12 @@
+security_monitor.settings_form_menu_link:
+  title: 'Security Monitor'
+  route_name: 'security_monitor.settings'
+  description: 'Access the settings form for Security Monitor'
+  parent: system.admin
+  weight: 1
+
+security_monitor.admin:
+  title: 'Security Monitor'
+  description: 'Access the settings form for Security Monitor'
+  parent: system.admin_config_services
+  route_name: 'security_monitor.settings'

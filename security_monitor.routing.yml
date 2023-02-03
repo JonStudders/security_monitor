@@ -1,0 +1,7 @@
+security_monitor.settings:
+  path: '/admin/security-monitor/settings'
+  defaults:
+    _form: '\Drupal\security_monitor\Form\SettingsForm'
+    _title: 'Security Monitor'
+  requirements:
+    _permission: 'access security_monitor settings'

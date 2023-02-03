@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Install, update, and uninstall functions for the Security Monitor module.
+ */
+
+ /**
+ * Implements hook_schema().
+ */
+
+function security_monitor_schema() {
+    $schema['security_monitor'] = [
+        'description' => 'Holds values for the endpoint url and authorization token.',
+        'fields' => [
+            'url' => [
+                'description' => 'Endpoint URL',
+                'type' => 'varchar_ascii',
+                'length' => '256',
+                'not null' => TRUE,
+            ],
+            'token' => [
+                'description' => 'Authorization Token',
+                'type' => 'varchar_ascii',
+                'length' => '256',
+                'not null' => TRUE,
+            ],
+        ],
+        'primary key' => ['url'],
+    ];
+
+    $schema['security_monitor_cron'] = [
+        'description' => 'Holds values used for cron.',
+        'fields' => [
+            'last_executed' => [
+                'description' => 'Time of last execution.',
+                'type' => 'varchar_ascii',
+                'length' => '256',
+                'not null' => TRUE,
+            ],
+        ],
+        'primary key' => ['last_executed'],
+    ];
+
+    return $schema;
+}
+
+// @todo Implement active/inactive on status report.

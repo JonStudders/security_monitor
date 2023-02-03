@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Implements hook_cron().
+ *
+ * Gathers all updates and send them as a JSON request to the endpoint defined.
+ *
+ * @param bool
+ * - Returns if date interval has not been long enough.
+ */
+
+ function security_monitor_cron() {
+   $interval = 7*24*60*60;
+
+   // Check interval since last execution
+   $database = \Drupal::database();
+   $query = $database->query("SELECT * FROM {security_monitor_cron}");
+   $result = $query->fetchAssoc();
+
+   if($result) {
+      $last_execution_time = $result['last_executed'];
+      $time = \Drupal::time()->getRequestTime();
+      if ($time <= ($last_execution_time + $interval)) {
+         return;
+      };
+   };
+
+   \Drupal::service('json_handler')->send_json();
+}

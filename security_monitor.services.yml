@@ -1,0 +1,3 @@
+services:
+  json_handler:
+    class: '\Drupal\security_monitor\Service\json_handler'

@@ -1,0 +1,6 @@
+name: Security Monitor
+description: Sends JSON information of all modules that need updating.
+package: Security monitor
+
+type: module
+core_version_requirement: ^10
